@@ -1,0 +1,34 @@
+<div class="container">
+<div class="columns is-gapless">
+  <div class="column is-two-thirds border-right border-bottom">
+  <h3 class="title is-3 index-title">Cán Bộ Phòng Ban</h3>
+  </div>
+  <div class="column column-gap has-background-white ">
+
+  </div>
+</div>
+
+  <table class="table is-hoverable is-fullwidth ">
+    <thead>
+      <tr>
+        <th class="has-text-centered">Tình trạng</th>
+        <th class="has-text-centered">Nội Dung</th>
+        <th class="has-text-centered">Người Gửi</th>
+        <th class="has-text-centered">Nhận được vào lúc</th>
+        <th class="has-text-centered">Gửi đi vào lúc</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @requests.each do |request| %>
+          <tr>
+            <td class="has-text-centered"><%= request.status %></td>
+            <td class="has-text-centered"><%= link_to request.student_content,edit_user_request_words_document_path(request.user,request.id) %></td>
+            <td class="has-text-centered"><%= request.user_name %></td>
+            <td class="has-text-centered"><%= request.created_at.strftime "%H:%M %Y/%m/%d"%></td>
+            <td class="has-text-centered"><%= request.updated_at.strftime "%H:%M %Y/%m/%d"%></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,2 @@
+class WordsDocumentController < ApplicationController
+end

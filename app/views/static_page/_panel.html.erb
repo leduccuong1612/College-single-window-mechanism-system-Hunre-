@@ -1,0 +1,30 @@
+
+  <ul class="pa0">
+    <li class="pv1">
+      <%= link_to "Tất Cả", root_path, class: "button is-fullwidth is-black" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to "Công Tác Sinh Viên", root_path(department:"Công Tác Sinh Viên"), class: "button is-fullwidth is-success " %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to "Đào Tạo", root_path(department:"Đào Tạo"), class: "button is-fullwidth is-link" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to "Cơ Sở Vật Chất", root_path(department:"Cơ Sở Vật Chất"), class: "button is-fullwidth is-info" %>
+    </li>
+ 
+    <li class="pv1">
+      <%= link_to "Tài Chính - Kế Toán", root_path(department:"Tài Chính - Kế Toán"), class: "button is-fullwidth is-warning" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to "Y Tế", root_path(department:"Y Tế"), class: "button is-fullwidth has-text-danger" %>
+    </li>
+
+    <li class="pv1">
+      <%= link_to "Lĩnh Vực Khác", "#", class: "button is-fullwidth is-outlined" %>
+    </li>
+  </ul>

@@ -1,0 +1,113 @@
+<% if @document_id.blank? %>
+  <h1 class="title is-4 pt2 has-text-centered">Upload Biểu Mẫu</h1>
+  <%= simple_form_for [current_user, @request] do |f| %>
+  <div class="select">
+    <%= f.collection_select :words_document_id, WordsDocument.all, :id, :title , promt: "Choose a category", class: "select" %>
+    </div>
+    <br>
+    <div class="columns">
+      <div class="column is-8">
+        <%= f.input :student_content, label:"Nội Dung Biểu Mẫu:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+      </div>
+      <div class="column is-4">
+        <div class="file has-name is-boxed">
+          <label class="file-label">
+            <%= f.input :words, as: :file, input_html: { class:"file-input", id:"file-upload", data: { direct_upload_url: rails_direct_uploads_url  } } %>
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label" for="file-upload">
+                Upload biểu mẫu của bạn
+              </span>
+            </span>
+            <span class="file-name">
+              <div id="info-area">File Upload...</div>
+            </span>
+          </label>
+        </div>
+      </div>
+    </div>
+    <hr>
+      <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv3" %>
+
+  <% end %>
+<% else %>
+<h1 class="title is-3 pt2 has-text-centered">Đơn Đề Nghị Cấp Lại Bảng Điểm Học Tập Toàn Khóa</h1>
+<%= simple_form_for [current_user, @request] do |f| %>
+  <%= f.error_notification %>
+
+  <div class="field">
+    <div class="control">
+      <%= f.input :form_stuff, label:"Họ và Tên Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  <div class="columns">
+
+  <div class="field column is-4">
+    <div class="control">
+      <%= f.input :form_stuff, label:"Ngày, Tháng, Năm Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+    </div>
+  </div>
+
+  <div class="field column is-8">
+    <div class="control">
+      <%= f.input :form_stuff, label:"Nơi Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  </div>
+
+  <div class="columns">
+
+    <div class="field column is-5">
+      <div class="control">
+        <%= f.input :form_stuff, label:"Mã Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+      </div>
+    </div>
+
+    <div class="field column is-4">
+      <div class="control">
+        <%= f.input :form_stuff, label:"Khóa:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+      </div>
+    </div>
+
+        <div class="field column is-3">
+      <div class="control">
+        <%= f.input :form_stuff, label:"Lớp:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+      </div>
+    </div>
+
+  </div>
+
+    <div class="columns">
+
+  <div class="field column">
+    <div class="control">
+      <%= f.input :form_stuff,label:"Hệ Đào Tạo:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+    </div>
+  </div>
+
+  <div class="field column">
+    <div class="control">
+      <%= f.input :form_stuff, label:"Nghành:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+  </div>
+  <label class="label">Kính đề nghị Nhà trường cấp cho em bảng điểm học tập toàn khóa</label>
+  <div class="field">
+    <div class="control">
+      <%= f.input :form_stuff, label: "Lý Do:", input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+    </div>
+  </div>
+
+
+  <hr />
+
+  <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv4" %>
+
+<% end %>
+
+<% end %>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css" rel="stylesheet"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+  </head>
+  <body> 
+    <nav class="navbar border" role="navigation" aria-label="main navigation">
+      <div class="navbar-brand">
+        <%= link_to root_path, class:"navbar-item" do %>
+          <h1 class="title is-5">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
+        <% end %>
+        <div class="navbar-burger burger" data-target="navbar">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="navbar" class="navbar-menu">
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <% if user_signed_in? %>
+              <%# <div class="modal ">
+                <div class="modal-background" id="delete">
+                </div>
+                <div class="modal-card">
+                  <header class="modal-card-head">
+                    <p class="modal-card-title">Gửi Biểu Mẫu</p>
+                    <button class="delete" aria-label="close"></button>
+                  </header>
+                  <section class="modal-card-body">
+                    <div class="field">
+                      <div class="file is-centered is-boxed is-success has-name">
+                        <label class="file-label">
+                          <input class="file-input" type="file" id="file-upload" name="resume">
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fas fa-upload"></i>
+                            </span>
+                            <span class="file-label" for="file-upload">
+                              Tải Lên Biểu Mẫu
+                            </span>
+                          </span>
+                          <span class="file-name">
+                            <div id="file-upload-filename"></div>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </section>
+                  <footer class="modal-card-foot">
+                    <button class="button">Cancel</button>
+                  </footer>
+                </div>
+              </div> %>
+              <% unless current_user.manager? || current_user.staff? || current_page?(new_user_request_words_document_path(current_user))%>
+                <p class="control">
+                  <%= link_to "Gửi Biểu Mẫu",new_user_request_words_document_path(current_user), class: "button navbar-item is-primary is-rounded modal-button", id: "showModal" %>
+                </p>
+              <% end %>
+            <% end %>
+            &nbsp;
+            &nbsp;
+            <% if user_signed_in? %>
+              <div class="navbar-item has-dropdown is-hoverable">
+                <%= link_to "#{current_user.name} (#{role_name(current_user.role)})","#", class: "navbar-link" %>
+                <div class="navbar-dropdown is-right">
+
+                  <p>
+                    <%= link_to "Thông Tin Người Dùng","#", class:"navbar-item is-fullwidth" %>
+                  </p>
+
+                  <% unless current_page?(edit_user_registration_path(current_user)) %>
+                    <p>
+                      <%= link_to "Cập Nhật Tài Khoản",edit_user_registration_path(current_user), class:"navbar-item is-fullwidth" %>
+                    </p>
+                  <% end %>
+<hr class="navbar-divider">
+                  <p>
+                    <%= link_to "Đăng Xuất", destroy_user_session_path, method: :delete, class:"navbar-item is-fullwidth" %>
+                  </p>
+
+                </div>
+              </div>
+            <% else %>
+                <% unless current_page?(controller: 'devise/sessions', action: 'new') %>
+                  <p class="control">
+                    <%= link_to "Đăng Nhập", new_user_session_path, class:"navbar-item button" %>
+                  </p>
+                <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class= "has-background-light body">
+        <%= yield %>
+    </div>
+    <br>
+      <footer class="footer has-background-grey-lighter">
+        <div class="container is-dark">
+          <div class="content has-text-centered">
+            <p>Footer ABCDEF</p>
+          </div>
+        </div>
+      </footer>
+
+  </body>
+</html>

@@ -1,0 +1,61 @@
+@import "bulma";
+@import "functions";
+
+.pagination {
+  padding-left: 25px;
+}
+.pv1.f8.send {
+  padding-top: 15px;
+}
+.send-button {
+  margin-top: 10px;
+}
+.pv1.f8 {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+#info-area{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}
+.file.has-name.is-boxed{
+  margin-top: 38px;
+}
+
+.column.is-two-thirds.border-right.border-bottom{
+  height: 190px;
+  margin-left: 5px;
+}
+.notification {
+  border-radius: 0;
+}
+
+.notification:not(:last-child) {
+  margin-bottom: 0;
+}
+
+.hint {
+  font-size: small;
+}
+
+.tag {
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 9px !important;
+}
+
+.index-title {
+  margin-bottom: 10px !important;
+  a {
+    color: $dark;
+  }
+}
+
+.has-background-light.body{
+  padding-top: 15px;
+}
+
+//login
+

@@ -1,0 +1,40 @@
+<% @documents.each do |document| %>
+  <div class="box">
+    <div class="columns border-bottom has-background-white">
+      <div class= "column is-1">
+        <figure class="image is-4by5">
+          <%= image_tag 'meh.png',border:1 %>
+        </figure>
+      </div>
+      <div class="column is-8">
+        <p>
+          <b class="is-size-4 has-text-weight-medium index-title"><%= link_to document.title,"#" %></b>
+          <% if document.content.blank? %>
+            <br>
+            <br>
+          <% else %>
+            <%= link_to document.content.truncate(200, separator: '</p>'),"#", class:"has-text-black" %>
+          <% end %>
+        </p>
+      <div class="pv1 f8">
+        Tải xuống: <%= link_to "#{document.title.capitalize}#{document.content.capitalize}.doc", document.words, download: document.title, class: "is-link" %>  
+      </div>
+    </div>
+    <div class="column has-text-right">
+        <%= department_type(document.department) %>
+        <div class="pv1 f8 send"> 
+          <% if user_signed_in? %>
+            <div>
+              <p class="send-button">
+                <%= link_to "Gửi Đi Biểu Mẫu Này",new_user_request_words_document_path(current_user, document_id: document.id), class: "button is-primary modal-button has-text-white" %>
+              </p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<div class="pagination">
+  <%= paginate @documents %>
+</div>
