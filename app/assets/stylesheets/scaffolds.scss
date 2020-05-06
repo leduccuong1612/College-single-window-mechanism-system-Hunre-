@@ -1,6 +1,10 @@
 @import "bulma";
 @import "functions";
 
+.notification.is-primary.is-light {
+  border-radius: 0;
+  margin-bottom: 0;
+}
 .pagination {
   padding-left: 25px;
 }
@@ -15,7 +19,7 @@
   text-overflow: ellipsis;
   overflow:hidden;
 }
-#info-area{
+#text-area{
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow:hidden;
@@ -27,13 +31,6 @@
 .column.is-two-thirds.border-right.border-bottom{
   height: 190px;
   margin-left: 5px;
-}
-.notification {
-  border-radius: 0;
-}
-
-.notification:not(:last-child) {
-  margin-bottom: 0;
 }
 
 .hint {

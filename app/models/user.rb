@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  has_many :request_words_documents      
+  has_many :requests      
 
   enum role: [:student, :manager, :staff]
 

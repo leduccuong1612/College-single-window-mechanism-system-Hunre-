@@ -23,7 +23,7 @@
       <% @requests.each do |request| %>
           <tr>
             <td class="has-text-centered"><%= request.status %></td>
-            <td class="has-text-centered"><%= link_to request.student_content,edit_user_request_words_document_path(request.user,request.id) %></td>
+            <td class="has-text-centered"><%= link_to request.student_content,edit_user_request_path(request.user,request.id) %></td>
             <td class="has-text-centered"><%= request.user_name %></td>
             <td class="has-text-centered"><%= request.created_at.strftime "%H:%M %Y/%m/%d"%></td>
             <td class="has-text-centered"><%= request.updated_at.strftime "%H:%M %Y/%m/%d"%></td>
