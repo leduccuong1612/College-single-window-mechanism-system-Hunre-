@@ -1,0 +1,7 @@
+<% flash.each do |message_type, message| %>
+  <% if message_type == "primary" %>
+    <div class="notification is-primary is-light">
+      <p class="notice"> <%= message %></p>
+    </div>
+  <% end %>
+<% end %>

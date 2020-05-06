@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_16_081834) do
+ActiveRecord::Schema.define(version: 2020_05_06_144424) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
@@ -33,19 +33,35 @@ ActiveRecord::Schema.define(version: 2020_04_16_081834) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "request_words_documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+  create_table "departments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "title"
+    t.text "content"
+    t.boolean "form", default: false
+    t.bigint "department_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["department_id"], name: "index_documents_on_department_id"
+  end
+
+  create_table "requests", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "words_document_id"
+    t.bigint "document_id", null: false
     t.string "form_stuff"
-    t.string "student_content"
-    t.string "manager_content"
-    t.string "staff_content"
+    t.text "student_content"
+    t.text "manager_content"
+    t.text "staff_content"
     t.integer "status", default: 0
     t.integer "result"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["user_id"], name: "index_request_words_documents_on_user_id"
-    t.index ["words_document_id"], name: "index_request_words_documents_on_words_document_id"
+    t.index ["document_id"], name: "index_requests_on_document_id"
+    t.index ["user_id"], name: "index_requests_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -64,15 +80,8 @@ ActiveRecord::Schema.define(version: 2020_04_16_081834) do
     t.index ["role_id"], name: "index_users_on_role_id", unique: true
   end
 
-  create_table "words_documents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.string "department"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "request_words_documents", "users"
-  add_foreign_key "request_words_documents", "words_documents"
+  add_foreign_key "documents", "departments"
+  add_foreign_key "requests", "documents"
+  add_foreign_key "requests", "users"
 end

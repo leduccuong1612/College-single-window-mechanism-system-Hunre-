@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :manager
   resources :staff
   resources :users do
-    resources :request_words_documents
+    resources :requests
   end
   root "static_page#index"
 end

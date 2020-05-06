@@ -21,12 +21,12 @@
       </div>
     </div>
     <div class="column has-text-right">
-        <%= department_type(document.department) %>
+        <%= department_type(document.department_name) %>
         <div class="pv1 f8 send"> 
-          <% if user_signed_in? %>
+          <% if user_signed_in? && document.form? %>
             <div>
               <p class="send-button">
-                <%= link_to "Gửi Đi Biểu Mẫu Này",new_user_request_words_document_path(current_user, document_id: document.id), class: "button is-primary modal-button has-text-white" %>
+                <%= link_to "Sử dụng Form",new_user_request_path(current_user, document_id: document.id), class: "button is-primary modal-button has-text-white" %>
               </p>
             </div>
           <% end %>
