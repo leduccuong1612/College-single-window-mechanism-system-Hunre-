@@ -3,6 +3,7 @@ class CreateRequests < ActiveRecord::Migration[6.0]
     create_table :requests do |t|
       t.references :user, null: false, foreign_key: true
       t.references :document, null: false, foreign_key: true
+      t.references :department, null: true, foreign_key: true
       t.string :form_stuff
       t.text :student_content
       t.text :manager_content

@@ -1,9 +1,13 @@
 <% if @document_id.blank? %>
   <h1 class="title is-4 pt2 has-text-centered">Upload Biểu Mẫu</h1>
-  <%= simple_form_for [current_user, @request] do |f| %>
+  <%= simple_form_for [current_user, @request], remote: true do |f| %>
+    
     <div class="select">
-      <%= f.collection_select :document_id, Document.all, :id, :title , promt: "Choose a category", class: "select" %>
-      </div>
+      <%= f.collection_select :department_id, Department.all, :id, :name , class: "select" %>
+    </div>
+    <div class="select">
+      <%= f.collection_select :document_id, Document.all.where(department_id: :department_id), :id, :title , promt: "Choose a category", class: "select" %>
+    </div>
       <br>
       <div class="columns">
         <div class="column is-8">
@@ -12,7 +16,7 @@
         <div class="column is-4">
           <div class="file has-name is-boxed">
             <label class="file-label">
-              <%= f.input :files, as: :file, :multiple => true, input_html: { class:"file-input", id:"file-upload", data: { direct_upload_url: rails_direct_uploads_url  } } %>
+              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload", data: { direct_upload_url: rails_direct_uploads_url  } } %>
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>

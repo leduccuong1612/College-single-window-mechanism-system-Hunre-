@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:student_content, :title, :document_id, :files)
+      params.require(:request).permit(:student_content, :title, :document_id, :department_id, :files)
     end
 
   end
