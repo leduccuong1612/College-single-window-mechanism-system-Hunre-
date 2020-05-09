@@ -165,3 +165,8 @@
 .card-content.has-background-white.box{
   padding-top: 10px;
 }
+.msg-subject{
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow:hidden;
+}

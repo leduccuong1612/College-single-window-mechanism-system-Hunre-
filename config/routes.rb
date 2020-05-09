@@ -8,4 +8,6 @@ Rails.application.routes.draw do
     resources :requests
   end
   root "static_page#index"
+  get 'document_by_department' => 'document#document_by_department'
+  get 'document_by_name' => 'document#document_by_name'
 end

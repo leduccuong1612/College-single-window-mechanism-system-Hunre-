@@ -1,4 +1,4 @@
-module WordsDocumentHelper
+module DocumentHelper
   def department_type(department_type)
     if department_type == "Công Tác sinh Viên"
       content_tag :span, "#{department_type}", class: "tag is-primary"
