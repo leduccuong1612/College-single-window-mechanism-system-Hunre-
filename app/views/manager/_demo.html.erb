@@ -1,0 +1,4 @@
+<% if @request.present? %>
+  <iframe src=<%= url_for(@request.pdfs) %> width="630" height="810" style="border: none;"></iframe>     
+<% else %>
+<%end%>
