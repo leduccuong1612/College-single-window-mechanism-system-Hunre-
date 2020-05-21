@@ -1,0 +1,40 @@
+<div class="field">
+  <label class="label">Ghi Chú(sinh viên):</label>
+  <div class="control box">
+    <p><%= @request.student_content %></p>
+  </div>
+</div>
+<div class="">
+  <div class="tabs">
+    <ul>                               
+        <li id = "pass">
+          <%= link_to "Đạt Yêu Cầu","#" %>
+        </li id="b">                             
+        <li class="is-active" id = "fail">
+          <%= link_to "Không Đạt Yêu Cầu","#" %>
+        </li>          
+    </ul>
+  </div>
+  <div class="form">
+    <div id="pass-form" class="is-hidden"    >
+      <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
+      <div class="field">
+        <%= f.input :manager_content, label:"Ghi Chú Thêm:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :status, value: Request.statuses["pass"] %>
+      </div>
+      <div class="field">
+        <%= f.button :submit, 'Biểu Mẫu Đạt Yêu Cầu', class: "button is-success" %>
+      </div>
+      <% end %>
+    </div>
+    <div id="fail-form" >
+      <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
+        <%= f.input :manager_content, label:"Lý do:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+        <%= f.hidden_field :status, value: Request.statuses["fail"] %>
+        <%= f.button :submit, 'Biểu Mẫu Không Đạt Yêu Cầu', class: "button is-danger" %>
+      <% end %>   
+    </div>
+  </div>
+</div>

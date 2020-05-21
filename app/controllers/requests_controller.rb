@@ -6,11 +6,12 @@ class RequestsController < ApplicationController
 
   def create
     @request = current_user.requests.build request_params
-    if @request.save      
+    if @request.save    
+      redirect_to root_path  
       Libreconv.convert(ActiveStorage::Blob.service.send(:path_for,@request.files.key),"public/pdfs/test.pdf")
       @request.pdfs.attach(io: File.open("public/pdfs/test.pdf"), filename: 'file.pdf')
       flash[:primary] = "Gửi Biểu Mẫu Thành Công, Kết Quả Sẽ Được Thông Báo Qua Email Của Bạn !!"
-      redirect_to root_path
+
     end
   end 
 
@@ -26,7 +27,6 @@ class RequestsController < ApplicationController
       redirect_to manager_index_path
     end
   end
-  
   private
     def update_request_params
       update_request = params.require(:request).permit(:content)
@@ -35,7 +35,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:student_content, :title, :document_id, :department_id, :files)
+      params.require(:request).permit(:student_content, :title, :document_id, :department_id, :files, :pdfs)
     end
 
   end

@@ -5,22 +5,6 @@
   background-color: #F9F9F9;
   border-right: 1px solid #DEDEDE;
 }
-.messages {
-  display:block;
-  background-color: #fff;
-  border-right: 1px solid #DEDEDE;
-  padding: 40px 20px;
-}
-.message {
-  display:block;
-  background-color: #fff;
-  padding: 40px 20px;
-}
-.aside .compose {
-  height: 95px;
-  margin:0 -10px;
-  padding: 25px 30px;
-}
 .aside .compose .button {
   color: #F6F7F7;
 }
@@ -29,7 +13,7 @@
   font-weight: 700;
 }
 .aside .main {
-  padding: 0px 40px 40px 40px;
+  padding: 0px 0px 0px 20px;
   color: #6F7B7E;
 }
 .aside .title {
@@ -38,27 +22,23 @@
   font-weight: bold;
   text-transform: uppercase;
 }
-.aside .main .item {
+.item {
   display: block;
   padding: 10px 0;
   color: #6F7B7E;
 }
-.aside .main .item.active {
-  background-color: #F1F1F1;
-  margin: 0 -50px;
-  padding-left: 50px;
+.item{
+  padding-left: 30px;
 }
-.aside .main .item:active,.aside .main .item:hover {
-  background-color: #F2F2F2;
-  margin: 0 -50px;
-  padding-left: 50px;
+.main .item.active{
+  background-color: #33FF99;
 }
-.aside .main .icon {
+.main .icon {
   font-size: 19px;
   padding-right: 30px;
   color: #A0A0A0;
 }
-.aside .main .name {
+.name {
   font-size: 15px;
   color: #5D5D5D;
   font-weight: 500;
@@ -122,17 +102,17 @@
   padding: 10px 0;
   color: #5D5D5D;
 }
-.inbox-messages .msg-attachment {
+ .msg-attachment {
   float:right;
 }
-.inbox-messages .msg-snippet {
+.msg-snippet {
   padding: 5px 20px 0px 5px;
 }
-.inbox-messages .msg-subject .fa {
+ .msg-subject .fa {
   font-size: 14px;
   padding:3px 0;
 }
-.inbox-messages .msg-timestamp {
+.msg-timestamp {
   float: right;
   padding: 0 20px;
   color: #5D5D5D;
@@ -144,20 +124,7 @@
   display: inline-block;
   padding: 0 20px;
 }
-.avatar img {
-  width: 40px;
-  border-radius: 50px;
-  border: 2px solid #999;
-  padding: 2px;
-}
-.address .name {
-  font-size: 16px;
-  font-weight: bold;
-}
-.address .email {
-  font-weight: bold;
-  color: #B6C7D1;
-}
+
 .card.active {
   background-color:#F5F5F5;
 }
@@ -169,4 +136,63 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow:hidden;
+}
+
+.menu-label {
+  color: #8F99A3;
+  letter-spacing: 1.3;
+  font-weight: 700;
+}
+.menu-list {
+  color: #0F1D38;
+  font-size: 14px;
+  font-weight: 700;
+}
+.menu-list :hover {
+  background-color: transparent;
+}
+.menu-list {
+  background-color: transparent;
+  color: #276cda;
+  font-weight: 700;
+}
+
+.card {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.18);
+  margin-bottom: 2rem;
+}
+.card-header-title {
+  color: #8F99A3;
+  font-weight: 400;
+}
+.info-tiles {
+  margin: 1rem 0;
+}
+.info-tiles .subtitle {
+  font-weight: 300;
+  color: #8F99A3;
+}
+.hero.welcome.is-info {
+  background: #36D1DC;
+  background: -webkit-linear-gradient(to right, #5B86E5, #36D1DC);
+  background: linear-gradient(to right, #5B86E5, #36D1DC);
+}
+.hero.welcome .title, .hero.welcome .subtitle {
+  color: hsl(192, 17%, 99%);
+}
+.card .content {
+  font-size: 14px;
+}
+.card-footer-item {
+  font-size: 14px;
+  font-weight: 700;
+  color: #8F99A3;
+}
+
+.card-table .table {
+  margin-bottom: 0;
+}
+.events-card .card-table {
+  max-height: 250px;
+  overflow-y: scroll;
 }

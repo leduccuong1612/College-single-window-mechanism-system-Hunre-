@@ -1,17 +1,9 @@
 <div class="columns">
-<div class="column is-8">
-<iframe src=<%= url_for(@request.pdfs) %>
- width="900" height="1100" style="border: none;"></iframe>
-</div>
-<div class="column is-4">
-<%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
-  <%= f.input :status, as: :hidden, input_html: { value: Request.statuses["pass"]}%>
-  <%= f.button :submit, 'Chấp Nhận', class: "button is-success" %>
-<% end %>
+  <div class="column is-7 is-paddingless">
+    <iframe src=<%= url_for(@request.pdfs) %> width="850" height="1100" style="border: none;"></iframe>
+  </div>
 
-<%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
-  <%= f.input :status, as: :hidden, input_html: { value: Request.statuses["fail"]} %>
-  <%= f.button :submit, 'Từ Chối', class: "button is-danger" %>
-<% end %>
-</div>
+  <div class="column is-5 manager">
+    <%= render "manager_form" %>
+  </div>
 </div>

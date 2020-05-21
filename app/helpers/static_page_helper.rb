@@ -1,6 +1,6 @@
 module StaticPageHelper
   def department_type(department_type)
-    if department_type == "Công Tác sinh Viên"
+    if department_type == "Công Tác Sinh Viên"
       content_tag :span, "#{department_type}", class: "tag is-primary"
     elsif department_type == "Đào Tạo"
       content_tag :span, "#{department_type}", class: "tag is-link"

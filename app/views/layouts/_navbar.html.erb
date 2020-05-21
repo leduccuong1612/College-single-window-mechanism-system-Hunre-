@@ -1,13 +1,28 @@
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
-    <%= link_to root_path, class:"navbar-item" do %>
-      <h1 class="title is-5">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
-    <% end %>
-    <div class="navbar-burger burger" data-target="navbar">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <%= image_tag 'logo.png',style: 'height:60px; width:70px;',class:"navbar-item" %>
+    <%# <%= image_tag 'logo.png',style: 'height:60px; width:70px;',class:"navbar-item" %> 
+    <div class="navbar-item is-paddingless">
+        <% if user_signed_in? %>
+          <% if current_user.student?%>
+            <%= link_to root_path do %>
+              <h1 class="title is-5 has-text-success">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
+            <% end %>
+          <% elsif current_user.manager? %>
+            <%= link_to manager_index_path do %>
+              <h1 class="title is-5 has-text-success">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
+            <% end %>
+          <% elsif current_user.staff? %>
+            <%= link_to staff_index_path do %>
+              <h1 class="title is-5 has-text-success">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
+            <% end %>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <h1 class="title is-5 has-text-success">Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</h1>
+          <% end %>
+        <% end %>
+      </div>
   </div>
   <div id="navbar" class="navbar-menu">
     <div class="navbar-end">
@@ -52,13 +67,19 @@
             </p>
           <% end %>
         <% end %>
+        <p class="control">
+          <%= link_to "Thống KÊ",chart_path, class: "button navbar-item is-primary is-rounded modal-button", id: "showModal" %>
+        </p>
         &nbsp;
         &nbsp;
         <% if user_signed_in? %>
           <div class="navbar-item has-dropdown is-hoverable">
+          <% if current_user.staff? %>
+            <%= link_to "#{current_user.name} (#{role_name(current_user.role)} #{@department.name})","#", class: "navbar-link" %>
+          <% else %>
             <%= link_to "#{current_user.name} (#{role_name(current_user.role)})","#", class: "navbar-link" %>
+          <% end %>
             <div class="navbar-dropdown is-right">
-
               <p>
                 <%= link_to "Thông Tin Người Dùng","#", class:"navbar-item is-fullwidth" %>
               </p>
@@ -79,7 +100,7 @@
           </div>
         <% else %>
           <% unless current_page?(controller: 'devise/sessions', action: 'new') %>
-            <p class="control">
+            <p class="control ">
               <%= link_to "Đăng Nhập", new_user_session_path, class:"navbar-item button" %>
             </p>
           <% end %>

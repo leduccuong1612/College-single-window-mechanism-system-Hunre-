@@ -5,7 +5,7 @@ module UsersHelper
     elsif role == "manager"
       "Cán Bộ Một Cửa"
     elsif role == "staff"
-      "Cán Bộ Phòng Ban"
+      "Cán Bộ Phòng"
     end
   end
 end
