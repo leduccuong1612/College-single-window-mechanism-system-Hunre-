@@ -1,197 +1,177 @@
-    <div class="container">
+
         <div class="columns">
-            <div class="column is-3 ">
-                <aside class="menu is-hidden-mobile">
-                    <p class="menu-label name">
-                        Tình Trạng Yêu Cầu
-                    </p>
-                    <ul class="menu-list">
-                        <li>
-                          <%= link_to manager_index_path(status:0) do %>
-                            <span class="name">
-                              <% if Request.waiting.count > 0 %>
-                                <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
-                              <% end %>
-                              Tất Cả Yêu Cầu Và Kết quả
-                            </span>
-                          <% end %>
-                        </li>
-                        <li>
-                        <li>
-                          <%= link_to manager_index_path(status:0) do %>
-                            <span class="name">
-                              <% if Request.waiting.count > 0 %>
-                                <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
-                              <% end %>
-                              Yêu Cầu Của Sinh Viên
-                            </span>
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to manager_index_path(status:3), class:"item" do %>
-                            <span class="name">
-                              <% if Request.checked.count > 0 %>
-                                <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                              <% end %>
-                              Kết Quả Của Phòng Ban
-                            </span>
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to manager_index_path(status:3), class:"item" do %>
-                            <span class="name">
-                              <% if Request.checked.count > 0 %>
-                                <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                              <% end %>
-                              Yêu Cầu Đã Được Xử Lý Thành Công
-                            </span>
-                          <% end %>
-                        </li>
-                    </ul>
-                    <p class="menu-label">
-                        Sinh Viên
-                    </p>
-                    <ul class="menu-list">
-                      <li>
-                        <%= link_to manager_index_path(status:0), class:"item active" do %>
-                          <span class="name">
-                            <% if Request.waiting.count > 0 %>
-                              <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
-                            <% end %>
-                            Tất Cả Yêu Cầu Từ Sinh Viên
-                          </span>
-                        <% end %>
-                      </li>
-                    <ul class="menu-list">
-                        <li>
-                          <a>Tình Trạng Yêu Cầu</a>
-                            <ul>
-                              <li>
-                                <%= link_to manager_index_path(status:3), class:"item" do %>
-                                  <span class="name">
-                                    <% if Request.checked.count > 0 %>
-                                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                    <% end %>
-                                    Yêu Cầu Đã Được Gửi Tới Các Phòng Ban Liên Quan
-                                  </span>
-                                <% end %>
-                              </li>
-                              <li>
-                              <li>
-                                <%= link_to manager_index_path(status:3), class:"item" do %>
-                                  <span class="name">
-                                    <% if Request.checked.count > 0 %>
-                                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                    <% end %>
-                                    Yêu Cầu Không Được Duyệt
-                                  </span>
-                                <% end %>
-                              </li>
-                              <li>
-                                <%= link_to manager_index_path(status:3), class:"item" do %>
-                                  <span class="name">
-                                    <% if Request.checked.count > 0 %>
-                                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                    <% end %>
-                                    Yêu Cầu Quá Hạn
-                                  </span>
-                                <% end %>
-                              </li>
-                            </ul>
-                        </li>
-                        <li>
-                          <%= link_to manager_index_path(status:3), class:"item" do %>
-                            <span class="name">
-                              <% if Request.checked.count > 0 %>
-                                <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                              <% end %>
-                              Kết Quả Phòng Ban
-                            </span>
-                          <% end %>
-                        </li>
-                    </ul>
-                    <p class="menu-label">
-                        Liên Quan
-                    </p>
-                    <ul class="menu-list">
-                      <li>
-                        <%= link_to manager_index_path(status:3), class:"item" do %>
-                          <span class="name">
-                            <% if Request.checked.count > 0 %>
-                              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                            <% end %>
-                            Kết Quả Từ Tất Cả Phòng Ban
-                          </span>
-                        <% end %>
-                      </li>
-                      <li>
-                          <a>Các Phòng Ban Hiện Có</a>
-                          <ul>
-                            <li>
-                              <%= link_to manager_index_path(status:3), class:"item" do %>
-                                <span class="name">
-                                  <% if Request.checked.count > 0 %>
-                                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                  <% end %>
-                                  Công Tác Sinh Viên
-                                </span>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to manager_index_path(status:3), class:"item" do %>
-                                <span class="name">
-                                  <% if Request.checked.count > 0 %>
-                                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                  <% end %>
-                                  Cơ Sở Vật Chất
-                                </span>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to manager_index_path(status:3), class:"item" do %>
-                                <span class="name">
-                                  <% if Request.checked.count > 0 %>
-                                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                  <% end %>
-                                  Đào Tạo
-                                </span>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to manager_index_path(status:3), class:"item" do %>
-                                <span class="name">
-                                  <% if Request.checked.count > 0 %>
-                                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                  <% end %>
-                                  Tài Chính Kế Toán
-                                </span>
-                              <% end %>
-                            </li>
-                            <li>
-                              <%= link_to manager_index_path(status:3), class:"item" do %>
-                                <span class="name">
-                                  <% if Request.checked.count > 0 %>
-                                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                                  <% end %>
-                                  Y Tế
-                                </span>
-                              <% end %>
-                            </li>
-                          </ul>
-                      </li>
-                      <li>
-                        <%= link_to manager_index_path(status:3), class:"item" do %>
-                          <span class="name">
-                            <% if Request.checked.count > 0 %>
-                              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-                            <% end %>
-                            Kết Quả Từ Phòng Ban
-                          </span>
-                        <% end %>
-                      </li>
-                    </ul>
-                </aside>
-            </div>
+           <aside class="column is-3 aside is-fullheight">
+  <div class="main">
+    <p class="menu-label has-text-black">
+      Quản Lý Yêu Cầu
+    </p>
+    <ul class="menu-list">
+      <li>
+        <%= link_to manager_index_path(status:0), class:"item active" do %>
+          <span class="name">
+            <% if Request.waiting.count > 0 %>
+              <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
+            <% end %>
+            Tất Cả
+          </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to manager_index_path(status:0) do %>
+          <span class="name">
+            <% if Request.waiting.count > 0 %>
+              <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
+            <% end %>
+            Yêu Cầu Gửi Đến
+          </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to manager_index_path(status:3), class:"item" do %>
+          <span class="name">
+            <% if Request.checked.count > 0 %>
+              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+            <% end %>
+            Kết Quả Trả Về
+          </span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to manager_index_path(status:3), class:"item" do %>
+          <span class="name">
+            <% if Request.checked.count > 0 %>
+              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+            <% end %>
+            Yêu Cầu Đã Xử Lý
+          </span>
+        <% end %>
+      </li>
+    </ul>
+    <p class="menu-label has-text-black">
+      Sinh Viên
+    </p>
+      <ul class="menu-list">
+      <li>
+        <%= link_to manager_index_path(status:0) do %>
+          <span class="name">
+            <% if Request.waiting.count > 0 %>
+              <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
+            <% end %>
+            Tất Cả Yêu Cầu Từ Sinh Viên
+          </span>
+        <% end %>
+      </li>
+      </ul>
+      <ul class="menu-list">
+        <li>
+          <a class="has-text-grey">Tình Trạng Yêu Cầu</a>
+            <ul>
+              <li>
+                <%= link_to manager_index_path(status:3), class:"item" do %>
+                  <span class="name">
+                    <% if Request.checked.count > 0 %>
+                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                    <% end %>
+                    Yêu Cầu Đã Được Gửi Tới Các Phòng Ban Liên Quan
+                  </span>
+                <% end %>
+              </li>
+              <li>
+              <li>
+                <%= link_to manager_index_path(status:3), class:"item" do %>
+                  <span class="name">
+                    <% if Request.checked.count > 0 %>
+                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                    <% end %>
+                    Yêu Cầu Không Được Duyệt
+                  </span>
+                <% end %>
+              </li>
+              <li>
+                <%= link_to manager_index_path(status:3), class:"item" do %>
+                  <span class="name">
+                    <% if Request.checked.count > 0 %>
+                      <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                    <% end %>
+                    Yêu Cầu Quá Hạn
+                  </span>
+                <% end %>
+              </li>
+            </ul>
+        </li>
+    </ul>
+    <p class="menu-label has-text-black">
+        Phòng Ban Liên Quan
+    </p>
+    <ul class="menu-list">
+      <li>
+        <%= link_to manager_index_path(status:3), class:"item" do %>
+          <span class="name">
+            <% if Request.checked.count > 0 %>
+              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+            <% end %>
+            Kết Quả Từ Tất Cả Phòng Ban
+          </span>
+        <% end %>
+      </li>
+      <li>
+          <a class= "has-text-grey">Các Phòng Ban Hiện Có</a>
+          <ul>
+            <li>
+              <%= link_to manager_index_path(status:3), class:"item" do %>
+                <span class="name">
+                  <% if Request.checked.count > 0 %>
+                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                  <% end %>
+                  Công Tác Sinh Viên
+                </span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to manager_index_path(status:3), class:"item" do %>
+                <span class="name">
+                  <% if Request.checked.count > 0 %>
+                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                  <% end %>
+                  Cơ Sở Vật Chất
+                </span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to manager_index_path(status:3), class:"item" do %>
+                <span class="name">
+                  <% if Request.checked.count > 0 %>
+                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                  <% end %>
+                  Đào Tạo
+                </span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to manager_index_path(status:3), class:"item" do %>
+                <span class="name">
+                  <% if Request.checked.count > 0 %>
+                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                  <% end %>
+                  Tài Chính Kế Toán
+                </span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to manager_index_path(status:3), class:"item" do %>
+                <span class="name">
+                  <% if Request.checked.count > 0 %>
+                    <span class="has-text-danger">(<%= Request.checked.count%>)</span>
+                  <% end %>
+                  Y Tế
+                </span>
+              <% end %>
+            </li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+</aside>
             <div class="column is-9">
                 <section class="hero is-info welcome is-small">
                     <div class="hero-body">
@@ -237,4 +217,3 @@
                 </div>
             </div>
         </div>
-    </div>

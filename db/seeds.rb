@@ -54,6 +54,8 @@ User.create!(
       title: "Đơn Xác Nhận",
       content: "(Về việc sinh viên chấp hành quy định chính sách, Pháp luật của Đảng, Nhà nước và của Trường trong thời gian học tập tại Trường)",
       department_id:1,
+      info:"- Đơn xin thôi học (mẫu05a).
+      - Xác nhận không nợ sáchthư viện và nợ học phí của phòng Kế hoạch - Tài chính (mẫu 05b).",
       time:7 )
       word1.words.attach(
         io: File.open("public/words/congtacsinhvien.doc"),
@@ -64,6 +66,8 @@ User.create!(
       content: "",
       department_id:2,
       form: true,
+      info: "- Đơn xin bảo lưu (mẫu 12)
+      - Xác nhận không nợ sáchthư viện và nợ học phí của phòng Kế hoạch tài chính (mẫu 05b)",
       time:15 )
       word2.words.attach(
         io: File.open("public/words/daotao.doc"),
@@ -73,6 +77,7 @@ User.create!(
       title: "Giấy Đăng Ký Sử Dụng Phòng Học",
       content: "",
       department_id:5,
+      info:"Giấy xác nhận để xem xét, giải quyết chế độ ưu đãi trong giáo dục đào tạo",
       time:2 )
       word3.words.attach(
         io: File.open("public/words/cosovatchat.doc"),
@@ -82,6 +87,7 @@ User.create!(
       title:  "Giấy Đề Nghị",
       content: "(Về việc kiểm tra, phản ánh sai lệch thông tin về học phí trên hệ thống)",
       department_id:3,
+      info: "Đơn đề nghị cấp lại bảng điểm học tập toàn phần",
       time:3 )
       word4.words.attach(
         io: File.open("public/words/taichinhketoan.doc"),
@@ -91,6 +97,7 @@ User.create!(
       title: "Đơn Đề Nghị Thanh Toán Tiền Bảo Hiểm Thân Thể",
       content: "",
       department_id:4,
+      info:"Đơn đề nghị xác minh văn bằng và bảng điểm kèm theo bằng và bảng điểm photo",
       time:3 )
       word5.words.attach(
         io: File.open("public/words/yte.doc"),

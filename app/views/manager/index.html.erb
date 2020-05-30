@@ -1,6 +1,6 @@
     <div class="columns" id="mail-app">
       <%= render "panel"%>
-      <div class="column is-4 messages has-background-light" id="message-feed">
+      <div class="column is-4 messages has-background-light border-right" id="message-feed">
           <div class="inbox-messages">
               <div class="has-background-light">
                   <% @requests.each do |request| %>
@@ -12,7 +12,7 @@
                             <span class="msg-timestamp"><%= days_till_expiration(request.created_at, request.document.time) %></span>
                         </div>
                         <div class="msg-subject">
-                            <span class="msg-subject"><strong id="fake-subject-1"><%= request.student_content %></strong></span>
+                            <span class="msg-subject"><strong id="fake-subject-1"><%= simple_format(request.student_content) %></strong></span>
                         </div>
                         <div class="msg-snippet">
                             <p id="fake-snippet-1"><%= link_to "Xem Chi Tiết",edit_user_request_path(request.user,request.id) %></p> 
@@ -27,7 +27,18 @@
           </div>
       </div>
       <div class="column is-5 is-paddingless">
-        <div id="demo"></div>
-
+        <div id="demo"> 
+        <p class="has-text-centered name is-size-4">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          Ấn Vào Một Yêu Cầu Bất Kỳ Để Xem Trước Biểu Mẫu</p>
+        </div>
       </div>
     </div>

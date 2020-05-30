@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Xin Chào<%= @fail.user.name %> !</p>
+    <p>Biểu Mẫu Đã Của Bạn Không Đạt Yêu Cầu</p>
+    <p>
+    --------------------------
+    </p>
+    <p>Lý Do Không Đạt Yêu Cầu:
+      <p> <%= @fail.manager_content %>
+      </p>
+    </p>
+  </body>
+</html>

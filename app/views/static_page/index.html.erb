@@ -3,13 +3,15 @@
   </div>
 
   <div class="column is-2">
-    <div class="pl3 pr3 box has-background-white">
-      <%= render "panel" %>
+    <div class="stay">
+      <div class="pl3 pr3 box has-background-white">
+        <%= render "panel" %>
+      </div>
     </div>
   </div>
 
   <div class="column is-8 pl10">
-    <%= render "search" %>
-    <%= render "document" %>
+    <%= render "search" %>    
+    <div id="search-container"><%= render "document" %></div>
   </div>      
 </div>

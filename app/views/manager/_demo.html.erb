@@ -1,4 +1,17 @@
 <% if @request.present? %>
-  <iframe src=<%= url_for(@request.pdfs) %> width="630" height="810" style="border: none;"></iframe>     
+  <% if @request.checked?%>
+  <div class="box">
+    <label class="label">Ghi Chú(Cán Bộ Một Cửa):</label>
+    <div class="control box">
+      <%= @request.staff_content %>
+    </div>
+    <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
+      <%= f.hidden_field :status, value: Request.statuses["done"] %>
+      <%= f.button :submit, 'Thông Báo Tới Sinh Viên', class: "button is-success" %>
+    <% end %>
+  </div>
+  <% else %>  
+    <iframe src=<%= url_for(@request.pdfs) %> width="630" height="810" style="border: none;"></iframe>   
+  <% end %>
 <% else %>
 <%end%>

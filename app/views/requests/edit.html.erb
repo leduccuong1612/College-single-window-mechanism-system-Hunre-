@@ -4,6 +4,10 @@
   </div>
 
   <div class="column is-5 manager">
-    <%= render "manager_form" %>
+    <% if current_user.manager?%>
+      <%= render "manager_form" %>
+    <% elsif current_user.staff? %>
+      <%= render "staff_form" %>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,19 @@
+  <label class="label">Ghi Chú(sinh viên):</label>
+    <div class="control box">
+      <p><%= @request.student_content %></p>
+    </div>
+  <label class="label">Ghi Chú(Cán Bộ Một Cửa):</label>
+  <div class="control box">
+    <p><%= @request.manager_content %></p>
+  </div>
+      <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
+      <div class="field">
+        <%= f.input :staff_content, label:"Ghi Chú Thêm:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :status, value: Request.statuses["checked"] %>
+      </div>
+      <div class="field">
+        <%= f.button :submit, 'Gửi Trả Kết Quả Tới Cán Bộ Một Cửa', class: "button is-primary" %>
+      </div>
+      <% end %>
