@@ -1,7 +1,7 @@
 <div class="field">
   <label class="label">Ghi Chú(sinh viên):</label>
   <div class="control box">
-    <p><%= @request.student_content %></p>
+    <p><%= simple_format(@request.student_content) %></p>
   </div>
 </div>
 <div class="">
@@ -16,7 +16,7 @@
     </ul>
   </div>
   <div class="form">
-    <div id="pass-form" class="is-hidden"    >
+    <div id="pass-form">
       <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
       <div class="field">
         <%= f.input :manager_content, label:"Ghi Chú Thêm:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>

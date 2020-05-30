@@ -1,0 +1,7 @@
+<% if @filtered_info.present? %>
+  <div class="box info">
+    <label class="label"> Yêu Cầu của Biểu Mẫu: </label>
+    <p><%= simple_format(@filtered_info.info) %></p>
+  </div>
+<% else %>
+<%end%>

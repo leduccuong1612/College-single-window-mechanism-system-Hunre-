@@ -4,6 +4,7 @@
     <title>Hệ Thống Hỗ Trợ Quản Lý Cơ Chế Một Cửa</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= javascript_include_tag Ckeditor.cdn_url %>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -16,11 +17,11 @@
 
     <%= render "layouts/navbar" %>
 
-    <div class= "has-background-light body">
-        <%= yield %>
-    </div>
-
+    <div class= "has-background-light  bodylenght">
     <br>
+        <%= yield %>
+        <br>
+    </div>
     <%= render "layouts/footer" %>
   </body>
 </html>

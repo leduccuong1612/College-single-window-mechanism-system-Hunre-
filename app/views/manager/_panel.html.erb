@@ -1,7 +1,7 @@
 <aside class="column is-3 aside is-fullheight">
   <div class="main">
-    <p class="menu-label">
-      Tình Trạng Yêu Cầu
+    <p class="menu-label has-text-black">
+      Quản Lý Yêu Cầu
     </p>
     <ul class="menu-list">
       <li>
@@ -45,10 +45,10 @@
         <% end %>
       </li>
     </ul>
-    <p class="menu-label">
+    <p class="menu-label has-text-black">
       Sinh Viên
     </p>
-      <ul>
+      <ul class="menu-list">
       <li>
         <%= link_to manager_index_path(status:0) do %>
           <span class="name">
@@ -62,7 +62,7 @@
       </ul>
       <ul class="menu-list">
         <li>
-          <a>Tình Trạng Yêu Cầu</a>
+          <a class="has-text-grey">Tình Trạng Yêu Cầu</a>
             <ul>
               <li>
                 <%= link_to manager_index_path(status:3), class:"item" do %>
@@ -97,18 +97,8 @@
               </li>
             </ul>
         </li>
-        <li>
-          <%= link_to manager_index_path(status:3), class:"item" do %>
-            <span class="name">
-              <% if Request.checked.count > 0 %>
-                <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-              <% end %>
-              Kết Quả Phòng Ban
-            </span>
-          <% end %>
-        </li>
     </ul>
-    <p class="menu-label">
+    <p class="menu-label has-text-black">
         Phòng Ban Liên Quan
     </p>
     <ul class="menu-list">
@@ -123,7 +113,7 @@
         <% end %>
       </li>
       <li>
-          <a>Các Phòng Ban Hiện Có</a>
+          <a class= "has-text-grey">Các Phòng Ban Hiện Có</a>
           <ul>
             <li>
               <%= link_to manager_index_path(status:3), class:"item" do %>
@@ -176,16 +166,6 @@
               <% end %>
             </li>
           </ul>
-      </li>
-      <li>
-        <%= link_to manager_index_path(status:3), class:"item" do %>
-          <span class="name">
-            <% if Request.checked.count > 0 %>
-              <span class="has-text-danger">(<%= Request.checked.count%>)</span>
-            <% end %>
-            Kết Quả Từ Phòng Ban
-          </span>
-        <% end %>
       </li>
     </ul>
   </div>

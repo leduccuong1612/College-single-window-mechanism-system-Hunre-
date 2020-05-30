@@ -1,0 +1,35 @@
+<h1 class="title is-4 pt2 has-text-centered">Upload Biểu Mẫu</h1>
+  <%= simple_form_for [current_user, @request], remote: true do |f| %>
+    <label class="label">
+      Phòng Ban:
+
+      Biểu Mẫu Cần Chọn:
+
+    </label>
+      <br>
+      <div class="columns">
+        <div class="column is-8">
+          <%= f.input :student_content, label:"Nội Dung Biểu Mẫu:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+        </div>
+        <div class="column is-4">
+          <div class="file has-name is-boxed">
+            <label class="file-label">
+              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload", data: { direct_upload_url: rails_direct_uploads_url  } } %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label" for="file-upload">
+                  Upload biểu mẫu của bạn
+                </span>
+              </span>
+              <span class="file-name">
+                <div id="text-area">File Upload...</div>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+      <hr>
+      <br>
+      <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv3" %>

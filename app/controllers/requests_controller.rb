@@ -16,20 +16,34 @@ class RequestsController < ApplicationController
   end 
 
   def edit
-    @request = Request.find_by id: params[:id]
+    if current_user.staff?
+      @department = Department.find_by id: current_user.department_id
+    end
+      @request = Request.find_by id: params[:id]
   end 
 
   def update
     @request = Request.find_by id: params[:id]
-    @user_mailer = @request.user
+    @user_mailer = @request
     if @request.update(update_request_params)
-      NotificationMailer.with(document: @user_mailer).new_notification_email.deliver_later
+      if update_request_params[:status] == 1 
+        CheckingMailer.with(request: @user_mailer).new_checking_email.deliver_later
+      elsif update_request_params[:status] == 2
+        FailMailer.with(request: @user_mailer).new_fail_email.deliver_later
+      end
+    end
+    if current_user.manager?
+      redirect_to manager_index_path
+    elsif current_user.staff?
+      redirect_to staff_index_path
+    else
       redirect_to manager_index_path
     end
   end
+
   private
     def update_request_params
-      update_request = params.require(:request).permit(:content)
+      update_request = params.require(:request).permit(:manager_content, :staff_content)
       update_request[:status] = params[:request][:status].to_i
       return update_request
     end

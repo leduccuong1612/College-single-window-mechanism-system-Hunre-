@@ -1,28 +1,102 @@
 <% if @document_id.blank? %>
-  <h1 class="title is-4 pt2 has-text-centered">Upload Biểu Mẫu</h1>
-  <%= simple_form_for [current_user, @request], remote: true do |f| %>
-    
-    <div class="select">
-      <%= f.collection_select :department_id, Department.all, :id, :name , class: "select" %>
-    </div>
-    <div class="select">
-      <%= f.collection_select :document_id, Document.all.where(department_id: :department_id), :id, :title , promt: "Choose a category", class: "select" %>
-    </div>
-      <br>
-      <div class="columns">
-        <div class="column is-8">
-          <%= f.input :student_content, label:"Nội Dung Biểu Mẫu:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
+  <div class="column is-10 is-offset-1 box ">
+    <h1 class="title is-4 pt2 has-text-centered">Khởi Tạo Yêu Cầu </h1>
+    <%= simple_form_for [current_user, @request],html: { multipart: true }, remote: true do |f| %>
+
+      <div class="columns is-multiline">
+        <div class="column is-8 ">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Phòng: </label>
+            </div>
+            <div class="field-body">
+                <p class="control is-expanded">
+                  <div class="select">
+                    <%= f.collection_select :department_id, Department.all, :id, :name , class: "select" %>
+                  </div>
+                </p>
+                &nbsp; 
+                &nbsp;
+                <label class="label is-normal"> Biểu Mẫu: &nbsp; </label>
+              <div class="field">
+                <p class="control is-expanded">
+                  <div class="select document">
+                    <%= f.collection_select :document_id, 
+                    if @filtered_document.blank?
+                      Document.all
+                    else
+                      Document.all.where(department_id: :department_id)
+                    end, :id, :title , promt: "Choose a category", class: "select"%>
+                  </div>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="column is-4">
-          <div class="file has-name is-boxed">
+        <div class="column is-4 is-boxed">       
+          <div id="info">
+          </div>
+        </div>
+
+        <div class="column is-8">
+          <div class="field is-horizontal">
+            <div class="field-label is-normal">
+              <label class="label">Ghi Chú Kèm Theo:</label>
+            </div>
+            <div class="field-body">
+              <div class="field">
+                <div class="control">
+                  <%= f.cktext_area :student_content, input_html: { class: "textarea is-primary", placeholder: "Biểu mẫu của bạn có yêu cầu gì đặc biệt không?"},label: false, wrapper: false %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="column is-4" id="upload">
+            <div class="file has-name">
             <label class="file-label">
-              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload", data: { direct_upload_url: rails_direct_uploads_url  } } %>
+            
+              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload" },label: false, wrapper: false  %>
               <span class="file-cta">
                 <span class="file-icon">
                   <i class="fas fa-upload"></i>
                 </span>
                 <span class="file-label" for="file-upload">
-                  Upload biểu mẫu của bạn
+                  Upload biểu mẫu
+                </span>
+              </span>
+              <span class="file-name">
+                <div id="text-area">File Upload...</div>
+              </span>
+            </label>
+          </div><div class="file has-name">
+            <label class="file-label">
+            
+              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload" },label: false, wrapper: false  %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label" for="file-upload">
+                  Upload biểu mẫu
+                </span>
+              </span>
+              <span class="file-name">
+                <div id="text-area">File Upload...</div>
+              </span>
+            </label>
+          </div>
+          <div class="file has-name">
+            <label class="file-label">
+            
+              <%= f.input :files, as: :file, input_html: { class:"file-input", id:"file-upload" },label: false, wrapper: false  %>
+              <span class="file-cta">
+                <span class="file-icon">
+                  <i class="fas fa-upload"></i>
+                </span>
+                <span class="file-label" for="file-upload">
+                  Upload biểu mẫu
                 </span>
               </span>
               <span class="file-name">
@@ -32,84 +106,87 @@
           </div>
         </div>
       </div>
-      <hr>
+        <hr>
       <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv3" %>
-  <% end %>
+    <% end %>
+  </div>
 <% elsif @document_id=2 %>
-  <h1 class="title is-3 pt2 has-text-centered">Đơn Đề Nghị Cấp Lại Bảng Điểm Học Tập Toàn Khóa</h1>
-  <%= simple_form_for [current_user, @request] do |f| %>
-    <%= f.error_notification %>
+  <div class="column is-8 is-offset-2 box ">
+    <h1 class="title is-3 pt2 has-text-centered">Đơn Đề Nghị Cấp Lại Bảng Điểm Học Tập Toàn Khóa</h1>
+    <%= simple_form_for [current_user, @request] do |f| %>
+      <%= f.error_notification %>
 
-    <div class="field">
-      <div class="control">
-        <%= f.input :form_stuff, label:"Họ và Tên Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
-
-    <div class="columns">
-
-    <div class="field column is-4">
-      <div class="control">
-        <%= f.input :form_stuff, label:"Ngày, Tháng, Năm Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
-      </div>
-    </div>
-
-    <div class="field column is-8">
-      <div class="control">
-        <%= f.input :form_stuff, label:"Nơi Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-      </div>
-    </div>
-
-    </div>
-
-    <div class="columns">
-
-      <div class="field column is-5">
+      <div class="field">
         <div class="control">
-          <%= f.input :form_stuff, label:"Mã Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+          <%= f.input :form_stuff, label:"Họ và Tên Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
         </div>
       </div>
-
-      <div class="field column is-4">
-        <div class="control">
-          <%= f.input :form_stuff, label:"Khóa:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-        </div>
-      </div>
-
-          <div class="field column is-3">
-        <div class="control">
-          <%= f.input :form_stuff, label:"Lớp:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
-        </div>
-      </div>
-
-    </div>
 
       <div class="columns">
 
-    <div class="field column">
-      <div class="control">
-        <%= f.input :form_stuff,label:"Hệ Đào Tạo:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+      <div class="field column is-4">
+        <div class="control">
+          <%= f.input :form_stuff, label:"Ngày, Tháng, Năm Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+        </div>
       </div>
-    </div>
 
-    <div class="field column">
-      <div class="control">
-        <%= f.input :form_stuff, label:"Nghành:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+      <div class="field column is-8">
+        <div class="control">
+          <%= f.input :form_stuff, label:"Nơi Sinh:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
       </div>
-    </div>
 
-    </div>
-    <label class="label">Kính đề nghị Nhà trường cấp cho em bảng điểm học tập toàn khóa</label>
-    <div class="field">
-      <div class="control">
-        <%= f.input :form_stuff, label: "Lý Do:", input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
       </div>
-    </div>
+
+      <div class="columns">
+
+        <div class="field column is-5">
+          <div class="control">
+            <%= f.input :form_stuff, label:"Mã Sinh Viên:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+          </div>
+        </div>
+
+        <div class="field column is-4">
+          <div class="control">
+            <%= f.input :form_stuff, label:"Khóa:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+          </div>
+        </div>
+
+            <div class="field column is-3">
+          <div class="control">
+            <%= f.input :form_stuff, label:"Lớp:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+          </div>
+        </div>
+
+      </div>
+
+        <div class="columns">
+
+      <div class="field column">
+        <div class="control">
+          <%= f.input :form_stuff,label:"Hệ Đào Tạo:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" }%>
+        </div>
+      </div>
+
+      <div class="field column">
+        <div class="control">
+          <%= f.input :form_stuff, label:"Nghành:", input_html: { class: "input" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
+
+      </div>
+      <label class="label">Kính đề nghị Nhà trường cấp cho em bảng điểm học tập toàn khóa</label>
+      <div class="field">
+        <div class="control">
+          <%= f.input :form_stuff, label: "Lý Do:", input_html: { class: "textarea" }, wrapper: false, label_html: { class: "label" } %>
+        </div>
+      </div>
 
 
-    <hr />
+      <hr />
 
-    <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv4" %>
+      <%= f.button :submit, "Gửi Biểu Mẫu", class: "button is-primary is-large is-rounded mv4" %>
 
-  <% end %>
+    <% end %>
+  </div>
 <% end %>

@@ -6,4 +6,8 @@ class StaticPageController < ApplicationController
       @documents = Document.all.order("created_at DESC").page(params[:page]).per(10)
     end
   end
+  
+  def search_document
+    @documents = Document.where("title LIKE ?","%#{params[:key]}%").order("created_at desc").page(params[:page]).per(10)
+  end
 end

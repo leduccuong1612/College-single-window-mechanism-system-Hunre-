@@ -9,6 +9,7 @@ class Request < ApplicationRecord
 
   enum status: [:waiting, :pass, :fail, :checked, :done, :outdate]
   enum result: [:success, :error]
+  scope :select_staff_request, ->(department){where "status LIKE 1 AND department_id LIKE ?", department} 
   scope :select_status, ->(status){where "status LIKE ?", "#{status}"}
   scope :order_desc, ->{order created_at: :desc}
 end

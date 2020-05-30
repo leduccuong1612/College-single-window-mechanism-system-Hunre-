@@ -10,6 +10,4 @@ class ApplicationController < ActionController::Base
       return staff_index_path
     end
   end
-
-  
 end
