@@ -30,6 +30,8 @@ class RequestsController < ApplicationController
         CheckingMailer.with(request: @user_mailer).new_checking_email.deliver_later
       elsif update_request_params[:status] == 2
         FailMailer.with(request: @user_mailer).new_fail_email.deliver_later
+      elsif update_request_params[:status] == 4
+        FailMailer.with(request: @user_mailer).new_result_email.deliver_later
       end
     end
     if current_user.manager?

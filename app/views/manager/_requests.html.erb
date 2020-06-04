@@ -1,0 +1,26 @@
+<div class="inbox-messages">
+    <div class="has-background-light">
+        <% @requests.each do |request| %>
+          <div class="card-content has-background-white box">
+            <div class="request" data-request="<%= request.id %>">
+              <div class="msg-header">
+                  <span class="msg-from"><small>Yêu cầu từ: <%= request.user_name %></small></span>
+                  <span style="float:right;"><%= days_till_expiration(request.created_at, request.document.time) %></span>  
+              </div>
+              <div>
+                  <span><strong><%= simple_format(request.student_content, {class:"msg-subject"}, sanitize: false) %></strong></span>
+              </div>
+              <div class="msg-snippet">
+                  <p>       
+                    <span class="msg-from"><%= request.created_at.strftime("%H:%M, ngày %d tháng %-m") %></span>
+                    <span class="msg-timestamp"><%= link_to "Xem Chi Tiết",edit_user_request_path(request.user,request.id) %></span>
+                  </p> 
+              </div>
+          </div>
+        </div>
+        <% end %>
+      <div class="pagination">
+        <%= paginate @requests %>
+    </div>
+  </div>
+</div>
