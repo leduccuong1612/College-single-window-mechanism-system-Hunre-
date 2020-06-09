@@ -7,16 +7,16 @@
 <div class="">
   <div class="tabs">
     <ul>                               
-        <li id = "pass">
+        <li class="is-active" id = "pass">
           <%= link_to "Đạt Yêu Cầu","" %>
         </li id="b">                             
-        <li class="is-active" id = "fail">
+        <li  id = "fail">
           <%= link_to "Không Đạt Yêu Cầu","" %>
         </li>          
     </ul>
   </div>
   <div class="form">
-    <div id="pass-form">
+      <div id="pass-form">
       <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
       <div class="field">
         <%= f.input :manager_content, label:"Ghi Chú Thêm:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
@@ -29,12 +29,6 @@
       </div>
       <% end %>
     </div>
-    <div id="fail-form" >
-      <%= simple_form_for @request, url: user_request_path(@request.user,@request.id) do |f|%>
-        <%= f.input :manager_content, label:"Lý do:", input_html: { class: "textarea is-primary"}, wrapper: false, label_html: { class: "label" } %>
-        <%= f.hidden_field :status, value: Request.statuses["fail"] %>
-        <%= f.button :submit, 'Biểu Mẫu Không Đạt Yêu Cầu', class: "button is-danger" %>
-      <% end %>   
-    </div>
+
   </div>
 </div>

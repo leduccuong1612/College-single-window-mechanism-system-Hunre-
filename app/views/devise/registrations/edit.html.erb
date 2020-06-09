@@ -5,58 +5,60 @@
 <% end %>
 <section class="section">
   <div class="container">
-    <div class="columns is-centered box">
-      <div class="column is-4">
-        
-      <h2 class="title is-2">Cập Nhật Tài Khoản</h2>
-      <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-        <div class="has-text-danger">
-        <%= f.error_notification %>
+    <div class="columns is-centered">
+      <div class="box ">
+        <div class="column">
+          
+        <h2 class="title is-2">Thông Tin Người Dùng</h2>
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+          <div class="has-text-danger">
+          <%= f.error_notification %>
 
-          <div class="field">
-            <div class="control">
-              <%= f.input :role_id, label:"Mã Sinh Viên", autofocus: true, disabled: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+              <div class="control">
+                <%= f.input :login_name, label:"Mã Người Dùng", autofocus: true, disabled: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-              <%= f.input :name, label:"Tên Sinh Viên", required: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+              <div class="control">
+                <%= f.input :name, label:"Tên Người Dùng", disabled: true,  input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-              <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+              <div class="control">
+                <%= f.input :email, required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-          <% end %>
-          </div>
-
-          <div class="field">
-            <div class="control">
-            <%= f.input :password, label:"Mật Khẩu", autocomplete: "off", hint: "Để trống nếu như không muốn đổi", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+            <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+              <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+            <% end %>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-            <%= f.input :password_confirmation, label:"Xác Nhận Mật Khẩu Mới", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+              <div class="control">
+              <%= f.input :password, label:"Mật Khẩu Mới", autocomplete: "off", hint: "Để trống nếu như không muốn đổi", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
             </div>
-          </div>
 
-          <div class="field">
-            <div class="control">
-              <%= f.input :current_password,  label:"Mật Khẩu Cũ", hint: "Cần nhập lại mật khẩu để xác nhận thay đổi", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+            <div class="field">
+              <div class="control">
+              <%= f.input :password_confirmation, label:"Xác Nhận Mật Khẩu Mới", required: false, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
             </div>
+
+            <div class="field">
+              <div class="control">
+                <%= f.input :current_password,  label:"Mật Khẩu Cũ", hint: "Cần nhập lại mật khẩu để xác nhận thay đổi", required: true, input_html: { class: "input"}, wrapper: false, label_html: { class: "label" } %>
+              </div>
+          </div>
+          <%= f.button :submit, "Cập Nhật", class:"button is-info" %>
+
+        <% end %>
         </div>
-        <%= f.button :submit, "Cập Nhật", class:"button is-info" %>
-
-      <% end %>
       </div>
     </div>
   </div>
