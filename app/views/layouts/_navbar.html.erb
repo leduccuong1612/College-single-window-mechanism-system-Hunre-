@@ -67,13 +67,6 @@
             </p>
           <% end %>
         <% end %>
-        <% if user_signed_in? %>
-          <% if current_user.manager? %>
-            <p class="control">
-              <%= link_to "Thống KÊ",chart_path, class: "button navbar-item is-primary is-rounded modal-button", id: "showModal" %>
-            </p>
-          <% end %>
-        <% end%>
         &nbsp;
         &nbsp;
         <% if user_signed_in? %>

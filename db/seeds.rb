@@ -108,7 +108,7 @@ end
 users = User.where(role:0).order(:created_at)
 users.each do |user|
   request = user.requests.create!(
-    student_content: "Các Thầy Cô kiểm tra hộ em biểu mẫu này với, nếu được thì có thể cho em xin sau hôm nay không ạ?",
+    student_content: "Các Thầy Cô kiểm tra hộ em cái biểu mẫu này với ạ, nếu được thì có thể cho em xin sau hôm nay không ạ?",
     document_id:2,
     department_id:2
     )
@@ -126,8 +126,9 @@ users = User.where(role:0).order(:created_at)
 users.each do |user|
   request = user.requests.create!(
     student_content: "Các Thầy Cô kiểm tra hộ em cái biểu mẫu này với ạ, nếu được thì có thể cho em xin sau hôm nay không ạ?",
-    manager_content: "Cái Biểu Mẫu này sắp hết hạn rồi, phòng bên ý làm nhanh nhanh lên đi",
+    manager_content: "Biểu mẫu này sinh viên đang cần trong ngày nhé",
     document_id:2,
+    department_id:2,
     status:1
     )
     request.files.attach(

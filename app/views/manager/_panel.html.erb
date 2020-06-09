@@ -5,14 +5,14 @@
     </p>
     <ul class="menu-list">
       <li>
-        <%= link_to manager_index_path(status:0), class:"item active" do %>
+        <%= link_to chart_path(status:0), class:"item" do %>
           <span class="name">
-            Tất Cả Yêu Cầu
+            Trang Chủ
           </span>
         <% end %>
       </li>
       <li>
-        <%= link_to manager_index_path(status:0) do %>
+        <%= link_to manager_index_path(status:0), class:"item" do %>
           <span class="name">
             <% if Request.waiting.count > 0 %>
               <span class="has-text-danger">(<%= Request.waiting.count%>)</span>
@@ -22,7 +22,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to manager_index_path(status:3), class:"item" do %>
+        <%= link_to manager_index_path(status:3), class:"item active" do %>
           <span class="name">
             <% if Request.checked.count > 0 %>
               <span class="has-text-danger">(<%= Request.checked.count%>)</span>
