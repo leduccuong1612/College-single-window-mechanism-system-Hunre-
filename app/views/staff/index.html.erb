@@ -1,8 +1,6 @@
 <div class="columns is-gapless is multiline">
-  <div class="column is-two-thirds border-right border-bottom">
-    <h3 class="title is-3 index-title">Phòng <%= @department.name %></h3>
-  </div>
-  <div class="column column-gap has-background-white ">
+  <div class="column border-bottom">
+    <h3 class="title is-3 index-title">  &nbsp; Phòng <%= @department.name %></h3>
   </div>
 </div>
   <table class="table is-hoverable is-fullwidth ">
@@ -17,7 +15,7 @@
 
     <tbody>
       <% @requests.each do |request| %>
-          <tr>
+          <tr>   
             <td class="has-text-centered"><%= request.status %></td>
             <td class="has-text-centered"><%= link_to simple_format(request.student_content),edit_user_request_path(request.user,request.id) %></td>
             <td class="has-text-centered"><%= request.user_name %></td>
@@ -26,3 +24,6 @@
       <% end %>
     </tbody>
   </table>
+  <div class="pagination">
+    <%= paginate @requests %>
+  </div>

@@ -1,24 +1,5 @@
-# README
+# Đồ Án Tốt Nghiệp: Hệ Thống Hỗ Trợ Cơ Chế Một Cửa Cho Sinh Viên Đại Học Tài Nguyên Và Môi Trường Hà Nội
+Framework sử dụng: Ruby on Rails (phiên bản 6.0.2)
+Cơ Sở Dữ Liệu: SQL (Mysql Workbench)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
