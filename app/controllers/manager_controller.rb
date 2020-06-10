@@ -1,9 +1,11 @@
 class ManagerController < ApplicationController
   def index
     if(params.has_key?(:status))
-      @requests = Request.where(status: params[:status]).order_desc.page(params[:page]).per(6)
+      @requests = Request.where(status: params[:status].to_i).order_desc.page(params[:page]).per(5)
+    elsif(params.has_key?(:department))
+      @requests = Request.select_checked_request(params[:department].to_i).order_desc.page(params[:page]).per(5)
     else
-      @requests = Request.select_status("0").order_desc.page(params[:page]).per(6)
+      @requests = Request.select_status(0).order_desc.page(params[:page]).per(5)
     end
   end
 

@@ -133,9 +133,9 @@
   padding-top: 10px;
 }
 .msg-subject{
+  overflow:hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
-  overflow:hidden;
 }
 
 .menu-label {

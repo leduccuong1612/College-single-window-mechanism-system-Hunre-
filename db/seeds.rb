@@ -1,10 +1,10 @@
 20.times do |n|
-  role_id = "161106056#{n+1}"
+  login_name = "161106056#{n+1}"
   name = Faker::Name.name
   email = "example-#{n+1}@gmail.com"
   password = "123456"
   User.create!(
-    role_id: role_id,
+    login_name: login_name,
     name: name,
     email: email,
     password: password,
@@ -28,14 +28,14 @@ Department.create!(
 )
 User.create!(
     role: 1,
-    role_id: "123456789",
+    login_name: "123456789",
     name: "Tran Van A",
     password: "123456",
     password_confirmation: "123456")
 
 User.create!(
     role: 2,
-    role_id: "16121998",
+    login_name: "16121998",
     name: "Le Duc Cuong1",
     password: "123456",
     password_confirmation: "123456",
@@ -43,7 +43,7 @@ User.create!(
 
 User.create!(
     role: 2,
-    role_id: "16121997",
+    login_name: "16121997",
     name: "Le Duc Cuong2",
     password: "123456",
     password_confirmation: "123456",
@@ -55,7 +55,7 @@ User.create!(
       content: "(Về việc sinh viên chấp hành quy định chính sách, Pháp luật của Đảng, Nhà nước và của Trường trong thời gian học tập tại Trường)",
       department_id:1,
       info:"- Đơn xin thôi học (mẫu05a).
-      - Xác nhận không nợ sáchthư viện và nợ học phí của phòng Kế hoạch - Tài chính (mẫu 05b).",
+      - Xác nhận không nợ sách thư viện và nợ học phí của phòng Kế hoạch - Tài chính (mẫu 05b).",
       time:7 )
       word1.words.attach(
         io: File.open("public/words/congtacsinhvien.doc"),
@@ -109,7 +109,8 @@ users = User.where(role:0).order(:created_at)
 users.each do |user|
   request = user.requests.create!(
     student_content: "Các Thầy Cô kiểm tra hộ em cái biểu mẫu này với ạ, nếu được thì có thể cho em xin sau hôm nay không ạ?",
-    document_id:2
+    document_id:2,
+    department_id:2
     )
     request.files.attach(
       io: File.open("public/words/congtacsinhvien.doc"),
@@ -125,8 +126,9 @@ users = User.where(role:0).order(:created_at)
 users.each do |user|
   request = user.requests.create!(
     student_content: "Các Thầy Cô kiểm tra hộ em cái biểu mẫu này với ạ, nếu được thì có thể cho em xin sau hôm nay không ạ?",
-    manager_content: "Cái Biểu Mẫu này sắp hết hạn rồi, phòng bên ý làm nhanh nhanh lên đi",
+    manager_content: "Biểu mẫu này sinh viên đang cần trong ngày nhé",
     document_id:2,
+    department_id:2,
     status:1
     )
     request.files.attach(

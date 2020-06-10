@@ -8,7 +8,7 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4'
 # Use Puma as the app server
-gem 'puma', '~> 4.1'
+gem 'puma', ">= 4.3.5"
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
@@ -36,12 +36,11 @@ gem 'faker'
 gem 'trix', require: 'trix'
 gem 'mini_magick'
 gem 'jquery-rails'
-gem 'kaminari'
+gem "kaminari", ">= 1.2.1"
 gem 'libreconv'
 gem 'docx'
 gem 'chartkick'
 gem 'ckeditor', github: 'galetahub/ckeditor'
-gem "mini_magick"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

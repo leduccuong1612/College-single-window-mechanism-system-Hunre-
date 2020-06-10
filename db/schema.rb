@@ -87,14 +87,13 @@ ActiveRecord::Schema.define(version: 2020_05_25_091103) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "role_id"
+    t.string "login_name"
     t.string "name"
     t.integer "role"
-    t.integer "staff_role"
     t.bigint "department_id"
     t.index ["department_id"], name: "index_users_on_department_id"
+    t.index ["login_name"], name: "index_users_on_login_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
