@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   
   get 'chart' => 'manager#chart'
   get 'demo_by_click' => 'manager#demo_by_click'
+  get 'dowload' => 'manager#dowload', format: 'docx'
 end

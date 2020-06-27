@@ -29,14 +29,14 @@ Department.create!(
 User.create!(
     role: 1,
     login_name: "123456789",
-    name: "Tran Van A",
+    name: "Lê Đức Cường",
     password: "123456",
     password_confirmation: "123456")
 
 User.create!(
     role: 2,
     login_name: "16121998",
-    name: "Le Duc Cuong1",
+    name: "Lê Đức Cường1",
     password: "123456",
     password_confirmation: "123456",
     department_id: 1)
@@ -44,7 +44,7 @@ User.create!(
 User.create!(
     role: 2,
     login_name: "16121997",
-    name: "Le Duc Cuong2",
+    name: "Lê Đức Cường2",
     password: "123456",
     password_confirmation: "123456",
     department_id: 2)
@@ -54,8 +54,7 @@ User.create!(
       title: "Đơn Xác Nhận",
       content: "(Về việc sinh viên chấp hành quy định chính sách, Pháp luật của Đảng, Nhà nước và của Trường trong thời gian học tập tại Trường)",
       department_id:1,
-      info:"- Đơn xin thôi học (mẫu05a).
-      - Xác nhận không nợ sách thư viện và nợ học phí của phòng Kế hoạch - Tài chính (mẫu 05b).",
+      info:"- Đơn xin thôi học (mẫu05a)",
       time:7 )
       word1.words.attach(
         io: File.open("public/words/congtacsinhvien.doc"),
@@ -66,8 +65,7 @@ User.create!(
       content: "",
       department_id:2,
       form: true,
-      info: "- Đơn xin bảo lưu (mẫu 12)
-      - Xác nhận không nợ sáchthư viện và nợ học phí của phòng Kế hoạch tài chính (mẫu 05b)",
+      info: "- Đơn xin bảo lưu (mẫu 12)",
       time:15 )
       word2.words.attach(
         io: File.open("public/words/daotao.doc"),

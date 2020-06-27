@@ -3,7 +3,7 @@
     <div class="columns border-bottom has-background-white">
       <div class= "column is-1">
         <figure class="image is-4by5">
-          <%= image_tag 'meh.png',border:1 %>
+          <%= image_tag 'meh.png', border:1 %>
         </figure>
       </div>
       <div class="column is-8">
@@ -17,7 +17,7 @@
           <% end %>
         </p>
       <div class="pv1 f8">
-        Tải xuống: <%= link_to "#{document.title.capitalize}#{document.content.capitalize}.doc", document.words, download: document.title, class: "is-link" %>  
+        Tải xuống: <%= link_to "#{document.title.capitalize}#{document.content.capitalize}(.docx)", document.words, download: document.title, class: "is-link" %>  
       </div>
     </div>
     <div class="column has-text-right">

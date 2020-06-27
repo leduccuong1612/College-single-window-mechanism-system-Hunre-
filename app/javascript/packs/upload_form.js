@@ -56,3 +56,22 @@ $(document).ready(() => {
 		}, 1000);
 	});
 });
+
+$(document).ready(() => {
+  $("#failform").hide();
+  $("#pass").css('color', 'red');
+
+  $("#pass").click(function() {
+    $("#failform").hide();
+    $("#passform").show();
+    $(this).css('color', 'blue');
+    $("#fail").css('color', 'black');
+  });
+
+  $( "#fail" ).click(function() {
+    $("#passform").hide();
+    $("#failform").show();
+    $(this).css('color', 'blue');
+    $("#pass").css('color', 'black');
+  });
+})
