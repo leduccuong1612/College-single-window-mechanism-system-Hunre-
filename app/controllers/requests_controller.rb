@@ -11,7 +11,6 @@ class RequestsController < ApplicationController
       Libreconv.convert(ActiveStorage::Blob.service.send(:path_for,@request.files.key),"public/pdfs/test.pdf")
       @request.pdfs.attach(io: File.open("public/pdfs/test.pdf"), filename: 'file.pdf')
       flash[:primary] = "Gửi Biểu Mẫu Thành Công, Kết Quả Sẽ Được Thông Báo Qua Email Của Bạn !!"
-
     end
   end 
 
@@ -31,7 +30,7 @@ class RequestsController < ApplicationController
       elsif update_request_params[:status] == 2
         FailMailer.with(request: @user_mailer).new_fail_email.deliver_later
       elsif update_request_params[:status] == 4
-        FailMailer.with(request: @user_mailer).new_result_email.deliver_later
+        ResultMailer.with(request: @user_mailer).new_result_email.deliver_later
       end
     end
     if current_user.manager?
@@ -51,7 +50,7 @@ class RequestsController < ApplicationController
     end
 
     def request_params
-      params.require(:request).permit(:student_content, :title, :document_id, :department_id, :files, :pdfs)
+      params.require(:request).permit(:student_content, :title, :document_id, :department_id, :files, :pdfs, :extends)
     end
 
   end

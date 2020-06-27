@@ -1,4 +1,5 @@
 class ManagerController < ApplicationController
+  respond_to :docx
   def index
     if(params.has_key?(:status))
       @requests = Request.where(status: params[:status].to_i).order_desc.page(params[:page]).per(5)
@@ -10,6 +11,14 @@ class ManagerController < ApplicationController
   end
 
   def chart
+  end
+
+  def dowload
+    respond_to do |format|
+      format.docx do 
+        render docx: 'dowload', filename: 'chart.docx'
+      end
+    end
   end
 
   def demo_by_click

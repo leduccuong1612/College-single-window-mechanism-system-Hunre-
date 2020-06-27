@@ -22,7 +22,7 @@
         <% end %>
       </li>
       <li>
-        <%= link_to manager_index_path(status:3), class:"item active" do %>
+        <%= link_to manager_index_path(status:3), class:"item" do %>
           <span class="name">
             <% if Request.checked.count > 0 %>
               <span class="has-text-danger">(<%= Request.checked.count%>)</span>

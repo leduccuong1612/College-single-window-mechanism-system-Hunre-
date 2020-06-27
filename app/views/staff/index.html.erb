@@ -16,7 +16,7 @@
     <tbody>
       <% @requests.each do |request| %>
           <tr>   
-            <td class="has-text-centered"><%= request.status %></td>
+            <td class="has-text-centered"><%= request.document.time %> ngày</td>
             <td class="has-text-centered"><%= link_to simple_format(request.student_content),edit_user_request_path(request.user,request.id) %></td>
             <td class="has-text-centered"><%= request.user_name %></td>
             <td class="has-text-centered"><%= request.created_at.strftime "%H:%M %Y/%m/%d"%></td>
